@@ -1,10 +1,11 @@
 package org.example.devide_and_conquer;
 
 
+import java.util.Arrays;
 
 public class QuickSort {
 
-    public void quickSort(int[]array,int start,int end){
+    private void quickSort(int[]array,int start,int end){
         if(start>=end)
             return;
         int pivot=makePivot(array,start,end);
@@ -12,34 +13,39 @@ public class QuickSort {
         quickSort(array,pivot+1,end);
     }
 
-    private int makePivot(int[] array, int start, int end) {
-            int middle=(start+end)/2;
-            int pivot=array[middle];
-            int count=0;
-        for (int i = start; i < end; i++)
-                if(array[i]>pivot)
-                    count++;
-
-        int pvoitIndex=start+count;
-        int temp=pivot;
-        pivot=array[pvoitIndex];
-        array[pvoitIndex]=temp;
-        for (int s = start, e = end; s < pvoitIndex && e > pvoitIndex; s += 1, e -= 1) {
-            while (array[s] < pivot)	// Find first value > pivot
-                s += 1;		// tip loop must break worst at pivot_idx
-
-            while (array[e] > pivot)	// Find last value <= pivot
-                e -= 1;
-
-            if (s < pvoitIndex && e > pvoitIndex)
-                swap (array,s,e);
+    private int makePivot(int array[],int start,int end){
+          int middle=start+(end-start)/2;
+          int count=0;
+        for (int i = start; i <=end ; i++) {
+                if(array[i]<array[middle])
+                     count++;
         }
-        return pvoitIndex;
+        int pivotIndex=count+start;
+        swap(array, pivotIndex ,  middle);
+
+        for(int s=start,e=end;s<middle&&e>middle;){
+            int pivot=array[pivotIndex];
+            while (array[s]<pivot)s++;
+            while(array[e]>pivot)e--;
+            swap(array,s,e);
+        }
+        return pivotIndex;
     }
 
-    void swap(int array[],int s,int end){
-            int temp=array[s];
-            array[s]=array[end];
-            array[end]=temp;
+    private void swap(int []array ,int first,int second){
+            int temp=array[first];
+            array[first]=array[second];
+            array[second]=temp;
+    }
+
+    public void quickSort(int array[]){
+        quickSort(array,0,array.length-1);
+    }
+
+    public static void main(String[] args) {
+        int array[]={5,2,4,3,-1,2};
+         QuickSort sort=new QuickSort();
+         sort.quickSort(array);
+        System.out.println(Arrays.toString(array));
     }
 }
