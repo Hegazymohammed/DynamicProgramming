@@ -21,6 +21,14 @@ public class LeetCode1544 {
 
     return result.reverse().toString();
 }
+private void print(){
+    System.out.println("hello world");
+}
+
+public int print(int x){
+    System.out.println(x);
+        return 0;
+}
 
         public static void main(String[] args) {
             System.out.println(LeetCode1544.makeGood("leEeetcode"));
