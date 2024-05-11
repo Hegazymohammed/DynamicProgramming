@@ -23,8 +23,11 @@ public class Leetcode1614 {
             return result;
         }
 
+
+        void applayPermutaions(int nums){
+
+        }
     public static void main(String[] args) {
-            String s="8*((1*(5+6))*(8/6))";
-        System.out.println(Leetcode1614.maxDepth(s));
+        System.out.println((int)'z'-'a');
     }
 }

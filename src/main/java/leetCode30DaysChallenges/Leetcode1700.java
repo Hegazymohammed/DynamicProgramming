@@ -2,6 +2,8 @@ package leetCode30DaysChallenges;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Leetcode1700 {
     public  static int countStudents(int[] students, int[] sandwiches) {
@@ -26,7 +28,8 @@ public class Leetcode1700 {
     }
 
     public static void main(String[] args) {
-
+        int array[]= IntStream.generate(()->0).limit(10).toArray();
+      Stream.of("hegazy","home","sady").flatMap(key->Stream.ofNullable(System.getProperty(key))).forEach(System.out::println);
 
     }
 }
